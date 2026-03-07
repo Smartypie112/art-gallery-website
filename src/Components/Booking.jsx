@@ -37,7 +37,7 @@ const isFormValid = () => {
     const files = Array.from(e.target.files);
 
     if (images.length + files.length > 5) {
-      alert("Maximum 5 images allowed");
+      console.log("Maximum 5 images allowed");
       return;
     }
 
@@ -86,21 +86,21 @@ useEffect(() => {
         console.log("Uploaded URLs:", data.images);
         return data.images;
       } else {
-        alert("Image upload failed");
+        console.log("Image upload failed");
         return null;
         console.log(data)
       }
 
     } catch (err) {
       console.error(err);
-      alert("Upload error");
+      console.log("Upload error");
     }
   };
 
   const handleSendOtp = async () => {
 
   if (!phone) {
-    alert("Please enter your phone number.");
+    
     return;
   }
 
@@ -121,15 +121,14 @@ useEffect(() => {
     setSendingOtp(false); // stop loading
 
     if (data.success) {
-      alert("OTP sent successfully on WhatsApp.");
       setOtpSent(true);
     } else {
-      alert("Failed to send OTP.");
+      console.log("Failed to send OTP.");
     }
 
   } catch (err) {
     setSendingOtp(false);
-    alert("Server error");
+    console.log("Server error");
     console.error(err);
   }
 
@@ -138,7 +137,7 @@ useEffect(() => {
   const handleVerifyOtp = async () => {
 
   if (!otp) {
-    alert("Please enter the OTP.");
+    console.log("Please enter the OTP.");
     return;
   }
 
@@ -149,7 +148,7 @@ useEffect(() => {
     const uploadedImages = await uploadImages();
 
     if (!uploadedImages) {
-      alert("Image upload failed");
+      console.log("Image upload failed");
       setLoading(false);
       return;
     }
@@ -176,15 +175,15 @@ useEffect(() => {
     setLoading(false); // stop loading
 
     if (data.success) {
-      alert("Application submitted successfully!");
+      
       navigate("/thank-you");
     } else {
-      alert("Invalid OTP");
+      console.log("Invalid OTP");
     }
 
   } catch (err) {
     setLoading(false);
-    alert("Verification failed");
+    console.log("Verification failed");
     console.error(err);
   }
 };
@@ -346,7 +345,7 @@ useEffect(() => {
       setShowForm(false);
       setShowPhone(true);
     } else {
-      alert("Please fill all fields before submitting.");
+      console.log("Please fill all fields before submitting.");
     }
   }}
   className="w-full bg-red-900 text-white py-2 rounded"
