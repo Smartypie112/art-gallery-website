@@ -7,7 +7,7 @@ function Selection() {
   const [preview, setPreview] = useState(null); // { appId, img }
 
   useEffect(() => {
-    fetch("http://localhost:5000/applications")
+    fetch("https://art-gallery-messanger.onrender.com/applications")
       .then(res => res.json())
       .then(data => setApplications(data));
   }, []);
@@ -56,7 +56,7 @@ function Selection() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/select-images", {
+      const res = await fetch("https://art-gallery-messanger.onrender.com/select-images", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, selectedImages: selected })

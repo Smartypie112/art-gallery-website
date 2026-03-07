@@ -75,7 +75,7 @@ useEffect(() => {
 
     try {
 
-      const res = await fetch("http://localhost:5000/upload-images", {
+      const res = await fetch("https://art-gallery-messanger.onrender.com/upload-images", {
         method: "POST",
         body: formData
       });
@@ -108,7 +108,7 @@ useEffect(() => {
 
   try {
 
-    const res = await fetch("http://localhost:5000/send-otp", {
+    const res = await fetch("https://art-gallery-messanger.onrender.com/send-otp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -154,7 +154,7 @@ useEffect(() => {
       return;
     }
 
-    const res = await fetch("http://localhost:5000/verify-otp", {
+    const res = await fetch("https://art-gallery-messanger.onrender.com/verify-otp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
