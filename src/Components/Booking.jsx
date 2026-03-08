@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUpload, FaFacebook, FaInstagram } from "react-icons/fa";
 import { useEffect } from "react";
-
+import Select from "react-select";
 
 function Booking() {
 
@@ -64,6 +64,10 @@ useEffect(() => {
 
   fetchCities();
 }, []);
+const cityOptions = indianCities.map((city) => ({
+  value: city,
+  label: city
+}));
   // Upload images to backend
   const uploadImages = async () => {
 
@@ -311,19 +315,17 @@ useEffect(() => {
 
 {/* City/Residence */}
 <label className="block text-gray-700 mb-1">City / Residence</label>
+
 {loadingCities ? (
   <p>Loading cities...</p>
 ) : (
-  <select
-    value={city}
-    onChange={(e) => setCity(e.target.value)}
-    className="w-full border p-2 rounded"
-  >
-    <option value="">Select City / Residence</option>
-    {indianCities.map((c) => (
-      <option key={c} value={c}>{c}</option>
-    ))}
-  </select>
+  <Select
+    options={cityOptions}
+    value={cityOptions.find((c) => c.value === city)}
+    onChange={(selected) => setCity(selected.value)}
+    placeholder="Search City..."
+    isSearchable
+  />
 )}
 
 {/* Previous Exhibition Details */}
